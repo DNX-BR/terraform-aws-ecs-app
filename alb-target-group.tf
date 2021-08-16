@@ -37,6 +37,7 @@ resource "aws_lb_listener_rule" "green" {
     for_each = length(var.http_header) > 0 ? [var.http_header] : []
     content {
       http_header {
+        http_header_name = "X-Forwarded-For"
         values = toset(condition.value)
       }
     }
