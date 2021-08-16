@@ -33,6 +33,15 @@ resource "aws_lb_listener_rule" "green" {
     }
   }
 
+  dynamic "condition" {
+    for_each = length(var.source_ips) > 0 ? [var.http_header] : []
+    content {
+      http_header {
+        values = toset(condition.value)
+      }
+    }
+  }
+
   lifecycle {
     ignore_changes = [
       action[0].target_group_arn
