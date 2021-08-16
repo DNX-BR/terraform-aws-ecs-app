@@ -38,7 +38,7 @@ resource "aws_lb_listener_rule" "green" {
     content {
       http_header {
         http_header_name = "X-Forwarded-For"
-        values = toset(condition.value)
+        values = condition.value
       }
     }
   }
