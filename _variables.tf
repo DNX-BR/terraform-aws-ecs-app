@@ -65,8 +65,7 @@ variable "source_ips" {
 
 variable "http_header" {
   default     = []
-  description = "Header to use on listerner rule"
-  type        = list(string)
+  description = "Header to use on listerner rule with name e value"
 }
 
 variable "hostname_redirects" {
